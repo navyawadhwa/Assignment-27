@@ -5,10 +5,6 @@ const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Constraint=Matter.Constraint;
 
-function preload()
-{
-	
-}
 
 function setup() {
 	createCanvas(800, 700);
@@ -26,17 +22,16 @@ function setup() {
 
 	roof1=new Roof(400,100,600,20);
 
-	rope1=new Rope(bob1.body, roof1.body,200  ,0);
-	rope2=new Rope(bob2.body, roof1.body,0,0);
-	rope3=new Rope(bob3.body, roof1.body,0, 0);
-	rope4=new Rope(bob4.body, roof1.body, 0);
-	rope5=new Rope(bob5.body, roof1.body, 0);
-	rope6=new Rope(bob6.body, roof1.body, 0);
+	rope1=new Rope(bob1.body, roof1.body, 304, 203);
+	rope2=new Rope(bob2.body, roof1.body,roof1/3,0);
+	rope3=new Rope(bob3.body, roof1.body,bob3.y*2, 0);
+	rope4=new Rope(bob4.body, roof1.body, bob4.y*2, 0);
+	rope5=new Rope(bob5.body, roof1.body, bob5.y*2, 0);
+	rope6=new Rope(bob6.body, roof1.body, bob6.y*2, 0);
 
 	Engine.run(engine);
   
 }
-
 
 function draw() {
   rectMode(CENTER);
@@ -58,11 +53,16 @@ function draw() {
    rope5.display();
    rope6.display();
 
-   
-  
+	keyPressed();
+
   drawSprites();
+
  
 }
 
-
+function keyPressed(){
+	if (keyCode === UP_ARROW) {
+	 Matter.body.applyForce(bob3.body,bob3.body.position,{x130,y:145});
+	}
+ }
 
